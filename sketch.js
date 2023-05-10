@@ -4,7 +4,6 @@ let x=-10;
 
 function setup() {
   createCanvas(windowWidth,windowHeight);
- 
 
 }
 
@@ -17,11 +16,6 @@ pantalla1();
 pantalla2 ();
 moverx ();
 
-
-  
-
-
-
 }
 function moverx(){
   if (x<=1500){
@@ -32,7 +26,7 @@ function moverx(){
 }
 
 function pantalla1() {
-  let a =( 100/-mouseY );  //el número q divido me da el ángulo en comparación a la distancia q muevo el mouse, mas alto el numero mas limito el angulo
+  let a =( 40/-mouseY );  //el número q divido me da el ángulo en comparación a la distancia q muevo el mouse, mas alto el numero mas limito el angulo
 push();
 translate(0,height);
 rotate(PI/a);
