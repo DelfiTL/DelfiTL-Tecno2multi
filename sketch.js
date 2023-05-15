@@ -14,8 +14,8 @@ un For(){} para cargar las img  por el nombre_00
 */
 
 let x=-10; //posx de las figuras
-let FiguraAmarilla = [];
-let cant=10; //para el for de las img
+//let FiguraAmarilla = [];
+//let cant=10; //para el for de las img
 let img;
 function preload() { //con esta funcion carga las img
 
@@ -24,7 +24,7 @@ function preload() { //con esta funcion carga las img
   FiguraAmarilla[i]= loadImage(amarillo);
 }*/
 
-img= loadImage ('assets/am-01.png');
+//img= loadImage ('assets/am-01.png');
 }
 
 
