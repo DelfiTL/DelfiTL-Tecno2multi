@@ -19,16 +19,17 @@ function moverx(){
   rect(x, 30, 10, 5); 
   rect(x, 60, 10, 5); 
   rect(x, -200, 50, 5); 
+
   pop();
   }
   
   function pantalla2 (){
-  
-   let b = (50/mouseY); //original mouseX
+  fill (200,10,0);
+  noStroke ();
+   let b = (50/mouseY); //original era mouseX
    let rotafig =(50/mouseX); // menor numero q divide mas amplitud de circunferencia
     push();
-    translate(width, height);
-  
+   translate(width, height);
     rotate(PI/b);
     
      rectMode (CENTER);
@@ -37,8 +38,10 @@ function moverx(){
      rect(-x-120, 40, 120, 20); 
     pop ();
     rect(-x, 0, 80, 20); 
+    fill (2,0,200);
     rect(-x, 30, 10, 5); 
-    rect(-x, 60, 10, 5); 
+    rect(-x, 60, 10, 5);
+    fill (0); 
     rect(-x, -200, 50, 5); 
     pop();
     
