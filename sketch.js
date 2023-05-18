@@ -14,6 +14,7 @@ un For(){} para cargar las img  por el nombre_00
 */
 
 let x=-10; //posx de las figuras
+
 //let FiguraAmarilla = [];
 //let cant=10; //para el for de las img
 let img;
@@ -42,10 +43,13 @@ angleMode(DEGREES); //cambia a angulo
 
 pantalla1();
 pantalla2 ();
-moverx ();
+
 }
 
 
 function mouseClicked(){
  
+}
+function mouseMoved() {
+  moverx ();
 }
