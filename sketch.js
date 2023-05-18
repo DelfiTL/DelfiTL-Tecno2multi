@@ -14,6 +14,7 @@ un For(){} para cargar las img  por el nombre_00
 */
 
 let x=-10; //posx de las figuras
+
 //let FiguraAmarilla = [];
 //let cant=10; //para el for de las img
 let img;
@@ -37,15 +38,18 @@ function setup() {
 function draw() {
   background (255,250,200);
 //image (FiguraAmarilla[amarillo], width/2, height/2, 100,100);
-//image (img,500,500,100,100);
+//image (img,100, 100);
 angleMode(DEGREES); //cambia a angulo
 
 pantalla1();
 pantalla2 ();
-moverx ();
+
 }
 
 
 function mouseClicked(){
  
+}
+function mouseMoved() {
+  moverx ();
 }
