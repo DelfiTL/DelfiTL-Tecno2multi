@@ -1,3 +1,4 @@
+
 function moverx(){
     if (x<=1500){
       x+=3;
@@ -52,9 +53,17 @@ rect(-200-x, -1500, 10, 5);
   rotate (PI/rotafig);
   rect(x, 60, 10, 5); 
   rect(x, -200, 50, 5); 
+  fill (33, 64,120); //azul
+  rect(x, -400, 80, 50);
+  rect(x, -50, 500, 1); 
+  rect(x-400, 100, 80, 50); 
+pop ();
+
   pop();
   }
   
+
+
   function pantalla2 (){
     let b = (400/mouseY); //si el numero es negativo gira en contra del sentido del reloj y positivo a favor del reloj
     let rotafig =(50/mouseX); // menor numero q divide mas amplitud de circunferencia
