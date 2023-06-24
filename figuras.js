@@ -1,110 +1,103 @@
+//----FIGURAS -----
+let x = -10; //posx de las figuras
+let xvel = -10;
 
-function moverx(){
-    if (x<=1500){
-      x+=3;
-      } else if (x>=1500){
-        x=-10;
-      }
+
+let A = 0; //valor inicial del array
+var peq = [];
+var med = [];
+
+class Figuras {
+
+  constructor() {
+    let voz = 100; //valor inicial
+    capa1 = createGraphics(windowWidth - 290, windowHeight - 150);
+
+    //cargar imagenes (estan en el preload y el constructor pra q carguen en la capa)
+    for (var i = 1; i < 17; i++) {
+      var imagen = loadImage("assets/figu/fig" + i + ".png");
+      peq.push(imagen);
+    }
+    for (var i = 1; i < 19; i++) {
+      var imagen = loadImage("assets/figu/figura" + i + ".png");
+      med.push(imagen);
+    }
+    A = (A + 1) % 17; //para el estado de las imagenes Incrementar A en 1 y asegurarse de que esté en el rango de 0 a 16
+
   }
 
 
-  
-  function pantalla1() {
-    let a =( 40/-mouseY );  //el número q divido me da el ángulo en comparación a la distancia q muevo el mouse, mas alto el numero mas limito el angulo
-    let rotafig =(-50/mouseX);
-    let tamh =(mouseY/10);
-    let tama =(mouseX/5);
-  
+  dibujarcapa1() {
     push();
-  translate(0,height);
-  rotate(PI/a);
-  rectMode (CENTER);
-  fill (215,36,15)
- // rect(x, 100, 150, 150);
-  rect(x, 100, tama, tamh); //cuadrado rojo grande
-  rect(x-220, 40, tama-20, 20);  
-  rect(x-40, 0, tama-80, 20); 
-
-  fill (200, 80,10); //naranjas
-  rect(x-500, 130, tama-10, 5); 
-  rect(x-450, -200, tama-300, 5); 
-  rect(x-600, 50, tama-50, 3); 
-  rect(x-600, 130, tama-10, 5); 
-  rect(x-450, 200, 80, 50); 
-  rect(x-1000, 50, 450, 30); 
-
-
-  fill (33, 64,120); //azul
-  rect(x, -400, tama-80, 50); 
-  rect(x-10, 30, 10, 5); 
-  rect(x, -300, 300, 5); 
- 
-  rect(x-700, 150, 40, 30)
-  
-  fill (0);
-  rect(x-600, 40, tama-120, 20);  
-  rect(x, 300, 150, 20); 
-  rect(x, 500, 40, 5); 
-  rect(-x, -200, 50, 5); 
-rect(-x, -2500, 10, 5); 
-rect(-200-x, -1500, 10, 5); 
-
-  push ();
-  rotate (PI/rotafig);
-  rect(x, 60, 10, 5); 
-  rect(x, -200, 50, 5); 
-  fill (33, 64,120); //azul
-  rect(x, -400, 80, 50);
-  rect(x, -50, 500, 1); 
-  rect(x-400, 100, 80, 50); 
-pop ();
-
-  pop();
-  }
-  
-
-
-  function pantalla2 (){
-    let b = (400/mouseY); //si el numero es negativo gira en contra del sentido del reloj y positivo a favor del reloj
-    let rotafig =(50/mouseX); // menor numero q divide mas amplitud de circunferencia
-    let tamh =(mouseY/10);
-    let tama =(mouseX/5);
-
-  fill (200,10,0);
-  noStroke ();
-     push();
-   translate(width, height/2);
-    rotate(PI/b);
-    
-     rectMode (CENTER);
-    push ();
-     rotate (PI/rotafig); // se mueve con el mouseX
-     rect(-x-120, 40, tama-120, 20);  //los valos de X son negativos para q se muevan hacia la izquierda
-     rect(-x, 160, 10, 5);
-    pop ();
-
-    rect(-x, 0, 80, 20); 
-
-    fill (33, 64,120); //figuras azules
-    rect(-x, 30, 10, 5); 
-  
-    rect(-x, 30, 10, 5); 
-    rect(-x, 350, 100, 5);
-    rect(-x+550, 30, 10, 5); 
-    rect(-x+600, 350, 100, 5);
-    rect(-x+550, 120, 50, 50); 
-    rect(-x+450, 90, 10, 5);
-
-    fill (0);  //figuras negras
-    rect (-x, 100, tama-250,50)
-    rect(-x, -200, 50, 5); 
-    rect(-x, 200, 10, 5); 
-    rect(-x, 100, 10, 5); 
-    rect (-x+700, 100, 70,50)
-    rect(-x+250, -200, 10, 5); 
-    rect(-x+400, 50, 10, 5); 
-    rect(-x+400, 100, 10, 5); 
-    rect(-x+450, 20, 200, 5); 
+    imageMode(CENTER);
+    image(capa1, windowWidth / 2, windowHeight / 2);
+    capa1.background(papel);
     pop();
-    
   }
+
+  moverx() {
+    if (x <= 1500) {
+      x += 3;
+    } else if (x >= windowWidth - 290) {
+      x = -10;
+    }
+    if (xvel <= 1500) {
+      xvel += 5;
+    } else if (x >= 1500) {
+      xvel = -10;
+    }
+  }
+
+  dibfig() {
+    // angleMode(DEGREES); //cambia a angulo
+    let mivoz = map(amp, nohaySonido, AMP_MIN, haySonido, AMP_MAX);
+    let mifrec = map(frecuencia, FREC_MIN, FREC_MAX, 0, 255, true);
+    // let a =( 20/-mouseY );
+    //let mivoz =mic;
+    let tam = 50;
+    let a = mivoz / 20;
+    let b = mivoz;
+    let c = mivoz; // paa el otro grupo de fig
+    //let a=mifrec/6;
+    //let b=mifrec;
+
+    capa1.push();
+    capa1.translate(0, height);
+    capa1.rotate(100 + a);
+
+    capa1.image(peq[A], width/2, 200);
+    capa1.image(peq[A], xvel, 200);
+  
+    capa1.image(med[A], x, 0);
+    capa1.pop();
+
+    capa1.push();
+    capa1.translate(0, height);
+    capa1.rotate(50 + c);
+
+    capa1.image(peq[A], xvel, 200);
+    capa1.image(peq[A + 1], width / 2 - 100, -100);
+    capa1.image(peq[A + 2], xvel - 100, 200);
+    capa1.image(peq[A + 3], xvel - 300, -100);
+
+    capa1.image(med[A], x, 0);
+
+
+    capa1.pop();
+
+    capa1.push();
+    capa1.translate(windowWidth, windowHeight - 10);
+    capa1.rotate(b);
+
+    capa1.image(peq[A], xvel, 0, tam, tam);
+    capa1.image(peq[A + 1], xvel, 0, tam, tam);
+    capa1.image(peq[A + 2], xvel, 0, tam, tam);
+    capa1.image(peq[A + 3], xvel, 0, tam, tam);
+
+    capa1.image(med[A], x, 200);
+    capa1.pop();
+  }
+
+
+
+}
